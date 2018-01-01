@@ -8,6 +8,8 @@ var passport   = require('passport');
 var session    = require('express-session');
 var bodyParser = require('body-parser');
 
+var authRoute = require('./app/routes/auth.js')(app);
+
 //For BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
