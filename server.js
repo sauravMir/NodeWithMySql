@@ -39,6 +39,8 @@ models.sequelize.sync().then(function() {
 });
 
 
+//load passport strategies
+require('./app/config/passport/passport.js')(passport, models.user);
 
 app.get('/', function(req, res) {
  
