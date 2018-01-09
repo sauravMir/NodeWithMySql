@@ -1,11 +1,16 @@
- var express    = require('express')
-    var app        = express()
-    var passport   = require('passport')
-    var session    = require('express-session')
-    var bodyParser = require('body-parser')
-    var env        = require('dotenv').load()
-    var exphbs     = require('express-handlebars')
+ var express    = require('express');
+    var app        = express();
+    var passport   = require('passport');
+    var session    = require('express-session');
+    var bodyParser = require('body-parser');
+    var env        = require('dotenv').load();
+    var exphbs     = require('express-handlebars');
 
+		var path = require('path');
+		var formidable = require('formidable');
+		var fs = require('fs');
+
+app.use(express.static(path.join(__dirname, './app/public')));
 
 
     //For BodyParser
@@ -20,15 +25,16 @@
 
 
      //For Handlebars
-    app.set('views', './app/views')
+    app.set('views', './app/views');
     app.engine('hbs', exphbs({extname: '.hbs'}));
     app.set('view engine', '.hbs');
     
 
     app.get('/', function(req, res){
-	  res.send('Welcome to Passport with Sequelize');
+	  //res.send('Welcome to Passport with Sequelize');
+			 //res.sendFile(path.join(__dirname, 'views/index.html'));
+			res.render('index');
 	});
-
 
 	//Models
     var models = require("./app/models");
@@ -49,6 +55,8 @@
     }).catch(function(err){
     console.log(err,"Something went wrong with the Database Update!")
     });
+
+
 
 
 
