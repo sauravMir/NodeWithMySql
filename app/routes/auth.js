@@ -17,7 +17,7 @@ module.exports = function(app, passport) {
  
 ));
   
-    app.get('/logout',authController.logout);
+  app.get('/logout',authController.logout);
   
   app.get('/dashboard',isLoggedIn, authController.dashboard);
   
@@ -30,6 +30,10 @@ module.exports = function(app, passport) {
     res.redirect('/signin');
  
 }
+  
+  app.post('/upload', authController.uploadPost);
+  
+  
  
 }
 
